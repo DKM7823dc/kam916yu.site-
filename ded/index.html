@@ -2,9 +2,36 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-10803239888"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-10803239888');
+</script>
+<!-- Event snippet for 购买 conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-10803239888/4geICMzn2ZwbENC3sZ8o',
+      'transaction_id': '',
+      'event_callback': callback
+  });
+  return false;
+}
+</script>
+    
     <script>
         function joinCommunity() {
-            window.open('https://wa.me/11111111111', '_blank');
+            gtag_report_conversion('https://lihi.cc/GM7y0'); 
         }
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -639,3 +666,4 @@
 </body>
 
 </html>
+
