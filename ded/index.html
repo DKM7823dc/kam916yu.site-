@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <script>
+        function joinCommunity() {
+            window.open('https://wa.me/11111111111', '_blank');
+        }
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Blaue-Chip-Aktien Bildungsressourcen | Investoren Lerngemeinschaft</title>
+    <style>
+        :root {
+            --primary-color: #1E3A8A;
+            --secondary-color: #F59E0B;
+            --accent-color: #10B981;
+            --warning-color: #F59E0B;
+            --text-dark: #1F2937;
+            --text-light: #6B7280;
+            --bg-light: #F9FAFB;
+            --bg-white: #FFFFFF;
+            --gradient-primary: linear-gradient(135deg, #1E3A8A 0%, #1E40AF 50%, #F59E0B 100%);
+            --gradient-secondary: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
+            --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            overflow-x: hidden;
+        }
+
+        /* Common Layout Components */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section--hero {
+            background: var(--gradient-primary);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section--hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="white" opacity="0.1"/><circle cx="80" cy="40" r="1" fill="white" opacity="0.1"/><circle cx="40" cy="80" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            pointer-events: none;
+        }
+
+        .section--white {
+            background: var(--bg-white);
+        }
+
+        .section--cta {
+            background: var(--gradient-secondary);
+            color: white;
+            text-align: center;
+        }
+
+        /* Typography */
+        .headline {
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .headline--primary {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .headline--secondary {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .headline--tertiary {
+            font-size: clamp(1.4rem, 2.5vw, 2rem);
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .text-description {
+            font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+        }
+
+        /* Buttons */
+        .btn {
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn--primary {
+            background: var(--primary-color);
+            color: white;
+            padding: 18px 40px;
+            font-size: 1.2rem;
+        }
+
+        .btn--floating {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--secondary-color);
+            color: white;
+            padding: 16px 60px;
+            font-size: 1.1rem;
+            z-index: 1000;
+            box-shadow: var(--shadow-large);
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(30, 58, 138, 0.4);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* Cards and Grids */
+        .grid {
+            display: grid;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .grid--auto {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid--testimonials {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--bg-white);
+            border-radius: 20px;
+            box-shadow: var(--shadow-medium);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .card--benefit {
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .card--testimonial {
+            padding: 25px;
+            border-left: 4px solid var(--accent-color);
+            border-radius: 15px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-large);
+        }
+
+        /* Special Components */
+        .info-container {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 600px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .info-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: var(--gradient-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-item {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .feature-item:last-child {
+            border-bottom: none;
+        }
+
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .feature-content {
+            flex: 1;
+        }
+
+        .feature-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: var(--secondary-color);
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1001;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .whatsapp-icon {
+            width: 32px;
+            height: 32px;
+            fill: white;
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #DC2626;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .risk-disclosure {
+            background: #FEF3C7;
+            border: 2px solid var(--warning-color);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 40px 0;
+        }
+
+        .risk-title {
+            color: var(--warning-color);
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .risk-list {
+            list-style: none;
+            padding: 0;
+            line-height: 1.8;
+        }
+
+        .risk-item {
+            margin-bottom: 12px;
+            color: #92400E;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: #9CA3AF;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: white;
+        }
+
+        .showcase-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: var(--shadow-large);
+            margin: 40px 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .section {
+                padding: 40px 0;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+            
+            .btn--floating {
+                min-width: 280px;
+                padding: 14px 40px;
+                font-size: 1rem;
+            }
+            
+            .grid--auto {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .grid--testimonials {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="section section--hero">
+        <div class="container">
+            <div style="position: relative; z-index: 2;">
+                <h1 class="headline headline--primary">Blaue-Chip-Aktien Bildungsressourcen</h1>
+                <p class="text-description">
+                    Erweitern Sie Ihr Wissen über etablierte Unternehmen und Aktienanalyse. 
+                    Unsere Bildungsgemeinschaft bietet strukturierte Lernmaterialien 
+                    über Blaue-Chip-Investments und Fundamentalanalyse.
+                </p>
+                
+                <div class="info-container">
+                    <div class="info-title">📚 Bildungsfokussierte Inhalte verfügbar</div>
+                    <p style="margin: 0; opacity: 0.9;">
+                        Analysieren Sie 5 etablierte Unternehmen und lernen Sie 
+                        die Grundlagen der Aktienbeurteilung kennen.
+                    </p>
+                </div>
+                
+                <button class="btn btn--primary" onclick="joinCommunity()">
+                    📊 Zu den Lernmaterialien
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="headline headline--secondary">Warum Blaue-Chip-Aktien studieren</h2>
+            <p class="text-description">
+                Blaue-Chip-Aktien repräsentieren etablierte Unternehmen mit stabiler Geschäftstätigkeit. 
+                Das Studium dieser Unternehmen bietet wertvolle Einblicke in Marktmechanismen 
+                und Unternehmensführung.
+            </p>
+
+            <div style="text-align: center;">
+                <img src="img/1.jpg" alt="Blaue-Chip-Aktien Bildungsmaterialien" class="showcase-image">
+            </div>
+
+            <ul class="feature-list">
+                <li class="feature-item">
+                    <div class="feature-icon">📖</div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Fallstudien zu 5 etablierten Unternehmen</h3>
+                        <p>Detaillierte Analyse bekannter Blaue-Chip-Unternehmen zur Veranschaulichung von Bewertungsmethoden und Geschäftsmodellen.</p>
+                    </div>
+                </li>
+                <li class="feature-item">
+                    <div class="feature-icon">🎓</div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Grundlagen der Aktienanalyse</h3>
+                        <p>Systematische Einführung in Bewertungsmethoden, Kennzahlenanalyse und Risikobewertung bei Aktieninvestments.</p>
+                    </div>
+                </li>
+                <li class="feature-item">
+                    <div class="feature-icon">👥</div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Lerngemeinschaft für Aktieninteressierte</h3>
+                        <p>Austausch mit anderen Lernenden über Marktentwicklungen, Analysemethoden und Investmentstrategien.</p>
+                    </div>
+                </li>
+            </ul>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <button class="btn btn--primary" onclick="joinCommunity()">
+                    📚 Bildungsmaterialien anfordern
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="section section--white">
+        <div class="container">
+            <h2 class="headline headline--secondary">Unser Bildungsansatz</h2>
+            <p class="text-description">Strukturiertes Lernen mit praxisnahen Beispielen und wissenschaftlich fundierten Methoden</p>
+
+            <div class="grid grid--auto">
+                <div class="card card--benefit">
+                    <div class="icon">🔍</div>
+                    <h3 class="headline headline--tertiary">Methodische Unternehmensanalyse</h3>
+                    <p>Systematische Betrachtung von Geschäftsmodellen, Finanzkennzahlen, Marktposition und Wettbewerbssituation etablierter Unternehmen.</p>
+                </div>
+                <div class="card card--benefit">
+                    <div class="icon">📚</div>
+                    <h3 class="headline headline--tertiary">Wissenschaftlich fundierte Inhalte</h3>
+                    <p>Bildungsmaterialien basieren auf anerkannten Bewertungsmethoden und aktueller Finanzmarktforschung.</p>
+                </div>
+                <div class="card card--benefit">
+                    <div class="icon">⚖️</div>
+                    <h3 class="headline headline--tertiary">Ausgewogene Perspektive</h3>
+                    <p>Objektive Darstellung von Chancen und Risiken verschiedener Investmentansätze ohne einseitige Empfehlungen.</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <button class="btn btn--primary" onclick="joinCommunity()">
+                    💬 Lerngemeinschaft beitreten
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="headline headline--secondary">Erfahrungen unserer Lerngemeinschaft</h2>
+            
+            <div class="grid grid--testimonials">
+                <div class="card card--testimonial">
+                    <p style="font-style: italic; margin-bottom: 15px; color: var(--text-light);">"Die strukturierten Lernmaterialien haben mir geholfen, die Grundlagen der Aktienanalyse zu verstehen. Sehr gut aufgebaut."</p>
+                    <div style="font-weight: 600; color: var(--text-dark);">- Maria K., Hamburg</div>
+                </div>
+                <div class="card card--testimonial">
+                    <p style="font-style: italic; margin-bottom: 15px; color: var(--text-light);">"Eine seriöse Lerngemeinschaft mit wissenschaftlich fundierten Inhalten. Die Fallstudien sind besonders hilfreich."</p>
+                    <div style="font-weight: 600; color: var(--text-dark);">- Thomas B., München</div>
+                </div>
+                <div class="card card--testimonial">
+                    <p style="font-style: italic; margin-bottom: 15px; color: var(--text-light);">"Endlich verständliche Erklärungen zu Aktienanalyse ohne oberflächliche Versprechungen. Sehr empfehlenswert."</p>
+                    <div style="font-weight: 600; color: var(--text-dark);">- Sarah M., Berlin</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="section section--cta">
+        <div class="container">
+            <h2 class="headline headline--primary">Erweitern Sie Ihr Finanzwissen</h2>
+            <p class="text-description">
+                Investieren Sie in Ihre Bildung und entwickeln Sie ein fundiertes Verständnis 
+                für Aktienanalyse und Unternehmensbeurteilung. Unsere Lernmaterialien 
+                unterstützen Sie dabei, informierte Entscheidungen zu treffen.
+            </p>
+            
+            <div style="text-align: center;">
+                <img src="img/5.jpg" alt="Finanzbildung und Lerngemeinschaft" class="showcase-image">
+            </div>
+            
+            <button class="btn btn--primary" onclick="joinCommunity()" style="font-size: 1.3rem; padding: 20px 50px;">
+                📖 Lernmaterialien anfordern
+            </button>
+        </div>
+    </section>
+
+    <!-- Risk Disclosure -->
+    <section class="section">
+        <div class="container">
+            <div class="risk-disclosure">
+                <h3 class="risk-title">⚠️ Wichtige Hinweise zu Finanzinformationen</h3>
+                <ul class="risk-list">
+                    <li class="risk-item"><strong>Nur zu Bildungszwecken:</strong> Alle bereitgestellten Informationen dienen ausschließlich der Bildung und dem Lernen über Finanzmärkte. Es handelt sich um keine Anlageberatung oder Empfehlungen.</li>
+                    <li class="risk-item"><strong>Keine Anlageberatung:</strong> Die Inhalte stellen keine personalisierte Finanzberatung dar. Jegliche Investitionsentscheidungen sollten nach Beratung durch qualifizierte Finanzexperten getroffen werden.</li>
+                    <li class="risk-item"><strong>Marktrisiken:</strong> Alle Finanzinstrumente unterliegen Marktrisiken. Vergangene Performance ist kein Indikator für zukünftige Ergebnisse. Kapitalverluste sind möglich.</li>
+                    <li class="risk-item"><strong>Eigenverantwortung:</strong> Jede Person ist selbst für ihre Finanzentscheidungen verantwortlich. Eine umfassende Recherche und professionelle Beratung werden empfohlen.</li>
+                    <li class="risk-item"><strong>Keine Garantien:</strong> Es werden keine Garantien für Richtigkeit, Vollständigkeit oder Aktualität der Bildungsinhalte übernommen.</li>
+                    <li class="risk-item"><strong>Regulatorische Compliance:</strong> Alle Finanzaktivitäten sollten im Einklang mit lokalen Gesetzen und Vorschriften stehen.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="privacy.html" class="footer-link" target="_blank">Datenschutz</a>
+                <a href="terms.html" class="footer-link" target="_blank">Nutzungsbedingungen</a>
+                <a href="risk_warning.html" class="footer-link" target="_blank">Risikohinweise</a> 
+            </div>
+            <p>&copy; 2025 Finanzbildungs-Lerngemeinschaft. Alle Rechte vorbehalten. Keine Anlageberatung.</p>
+        </div>
+    </footer>
+
+    <!-- Floating Elements -->
+    <button class="btn btn--floating" onclick="joinCommunity()">
+        📚 Bildungsmaterialien
+    </button>
+
+    <div class="whatsapp-float" onclick="joinCommunity()">
+        <svg class="whatsapp-icon" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.569-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.893 3.386"/>
+        </svg>
+        <div class="notification-badge">1</div>
+    </div>
+
+    <script>
+        // Smooth scrolling for anchors
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Animation observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        // Observe elements for animation
+        document.querySelectorAll('.card, .feature-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
